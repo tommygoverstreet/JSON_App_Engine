@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f2040">
+<title>AI JSON App Engine</title>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div id="app" data-pane="out" data-tab="pre">
+<header>
+ <h1>AI JSON <span>App Engine</span></h1>
+ <select id="tpl" class="btn" aria-label="Template"><option value="" disabled selected>Load a template</option></select>
+ <button class="btn" id="imp">Import</button><input type="file" id="file" accept=".json,application/json" hidden>
+ <button class="btn" id="expJ">Export JSON</button><button class="btn" id="expH">Export HTML</button>
+ <button class="btn go" id="go" title="Ctrl or Cmd + Enter">Compile</button>
+</header>
+<div id="status">Pick a template or paste a JSON blueprint.</div>
+<div class="work">
+ <section class="pane editor">
+  <div class="tabs" id="etabs"><button class="on" data-t="json">Payload.json</button><button data-t="html">index.html</button><button data-t="css">styles.css</button><button data-t="js">app.js</button><span class="badge"></span></div>
+  <div class="tools"><label><input type="checkbox" id="auto" checked> Compile as I type</label><button class="btn push" id="fmt">Format JSON</button></div>
+  <textarea id="code" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label="Code editor"></textarea>
+ </section>
+ <div class="split" id="split" role="separator" aria-orientation="vertical"></div>
+ <section class="pane out">
+  <div class="tabs">
+   <button data-go="pre">Preview</button><button data-go="res">Resources<i data-n="res">0</i></button><button data-go="css">CSS in use</button><button data-go="js">JS in use</button><button data-go="out">Compiled HTML</button><button data-go="log">Console<i data-n="log">0</i></button>
+  </div>
+  <div class="panel" id="p-pre">
+   <div class="tools"><span class="sizes"><button class="btn on" data-w="100%">Full</button> <button class="btn" data-w="820px">Tablet</button> <button class="btn" data-w="390px">Phone</button></span><button class="btn push" id="reload">Reload</button><button class="btn" id="pop">Open in tab</button></div>
+   <div id="stage"><div id="empty">Nothing compiled yet.<br>Choose a template and select Compile.</div><iframe id="frame" sandbox="allow-scripts allow-same-origin allow-popups allow-forms" title="Live preview"></iframe></div>
+  </div>
+  <div class="panel" id="p-res"></div><div class="panel" id="p-css"></div><div class="panel" id="p-js"></div><div class="panel" id="p-out"></div><div class="panel" id="p-log"></div>
+ </section>
+</div>
+<nav aria-label="Views"><button data-go="edit">Edit</button><button data-go="pre">Preview</button><button data-go="inspect">Inspect</button><button data-go="log">Console</button></nav>
+</div>
+<div id="toast" role="status"></div>
+<script src="js/core/Bus.js"></script>
+<script src="js/core/Component.js"></script>
+<script src="js/core/Store.js"></script>
+<script src="js/services/TemplateRegistry.js"></script>
+<script src="js/services/Compiler.js"></script>
+<script src="js/services/Scanner.js"></script>
+<script src="js/components/Panel.js"></script>
+<script src="js/components/Panels.js"></script>
+<script src="js/components/Console.js"></script>
+<script src="js/components/Preview.js"></script>
+<script src="js/components/Editor.js"></script>
+<script src="js/components/Nav.js"></script>
+<script src="js/components/Header.js"></script>
+<!-- Templates: add one line per file in js/templates/ -->
+<script src="js/templates/landing-page.js"></script>
+<script src="js/templates/ecommerce-product.js"></script>
+<script src="js/templates/auth-login.js"></script>
+<script src="js/templates/analytics-dashboard.js"></script>
+<script src="js/templates/ai-chat-ui.js"></script>
+<script src="js/templates/kanban-board.js"></script>
+<script src="js/templates/pricing-table.js"></script>
+<script src="js/templates/link-in-bio.js"></script>
+<script src="js/templates/dev-portfolio.js"></script>
+<script src="js/templates/article-reader.js"></script>
+<script src="js/App.js"></script>
+</body>
+</html>
